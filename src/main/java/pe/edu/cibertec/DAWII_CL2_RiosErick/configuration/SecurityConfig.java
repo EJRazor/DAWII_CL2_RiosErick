@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import pe.edu.cibertec.DAWII_CL2_RiosErick.service.UsuarioDetalleService;
+import org.springframework.security.config.annotation.web.configuration.*;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .requestMatchers("/auth/login",
                         "/auth/registrar",
                         "/auth/guardarUsuario",
@@ -35,7 +36,8 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().loginPage("/auth/login")
+                .formLogin()
+                .loginPage("/auth/login")
                 .defaultSuccessUrl("/home")
                 .usernameParameter("nomusuario")
                 .passwordParameter("passusuario")

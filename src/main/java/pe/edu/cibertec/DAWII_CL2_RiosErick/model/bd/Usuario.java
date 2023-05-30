@@ -22,9 +22,9 @@ public class Usuario {
     @Column(name="Apellidos")
     private String Apellidos;
     @Column(name="Email")
-    public String email;
+    private String email;
     @Column(name="NomUsuario")
-    public String nomusuario;
+    private String nomusuario;
     @Column(name="PassUsuario")
     private String PassUsuario;
 }
